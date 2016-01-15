@@ -6,3 +6,11 @@ c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Sounddddddddddddd
 c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.csprojResolveAssemblyReference.cache
 c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.exe
 c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.pdb
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\Soundddddddddddddddd.exe.config
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\Soundddddddddddddddd.exe
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\Soundddddddddddddddd.pdb
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\NAudio.dll
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\NAudio.xml
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.csprojResolveAssemblyReference.cache
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.exe
+C:\Users\hiro-matsushita\Documents\github\suntokaede\musicplayer\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.pdb

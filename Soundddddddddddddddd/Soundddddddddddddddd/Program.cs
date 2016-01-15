@@ -9,14 +9,14 @@ using NAudio.Wave;
 
 namespace Soundddddddddddddddd
 {
-    class NAudioControl
+    class NAudioControl : IDisposable
     {
         private WaveOut waveOut;
         private bool exitFlag = false;
 
         public NAudioControl()
         {
-            main();            
+            this.waveOut = new WaveOut();
         }
 
         /// <summary>
@@ -76,16 +76,14 @@ namespace Soundddddddddddddddd
         {
             string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             string[] fileList = Directory.GetFiles(directory);
-            string[] musicList = {};
-            int count = 0;
+            List<string> musicList = new List<string>();
             for (int n = 0, l = fileList.Length; n < l; n++)
             {
                 string fileName = Path.GetFileName(fileList[n]);
                 string ext = Path.GetExtension(fileName);
                 if (ext == ".wav"|| ext == ".mp3"|| ext == ".mp4"|| ext == ".m4v") {
-                    musicList = musicList.Concat(new string[] { fileName }).ToArray();
-                    Console.WriteLine(string.Format("{0}: {1}", count, fileName));
-                    count++;
+                    Console.WriteLine(string.Format("{0}: {1}", musicList.Count, fileName));
+                    musicList.Add(fileList[n]);
                 }
             }
             while (true)
@@ -94,7 +92,7 @@ namespace Soundddddddddddddddd
                 int num;
                 if (int.TryParse(n, out num))
                 {
-                    if(num >= 0 && num <= count) return musicList[num];
+                    if(num >= 0 && num < musicList.Count) return musicList[num];
                 }
                 Console.WriteLine("Invalid Input");
             }
@@ -103,12 +101,11 @@ namespace Soundddddddddddddddd
         /// <summary>
         /// メイン関数
         /// </summary>
-        private void main()
+        public void main()
         {
             while (true)
             {
                 string path = select();
-                using (waveOut = new WaveOut())
                 using (var reader = new AudioFileReader(path))
                 {
                     waveOut.Init(reader);
@@ -118,13 +115,21 @@ namespace Soundddddddddddddddd
                 if (exitFlag) { return; }
             }
         }
+
+        public void Dispose()
+        {
+            waveOut.Dispose();
+        }
     }
 
     class Program
     {
         static void Main()
         {
-            var n = new NAudioControl();
+            using (var n = new NAudioControl())
+            {
+                n.main();
+            }
         }
     }
 }
