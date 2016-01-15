@@ -1,0 +1,8 @@
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\Soundddddddddddddddd.exe.config
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\Soundddddddddddddddd.exe
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\Soundddddddddddddddd.pdb
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\NAudio.dll
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\bin\Debug\NAudio.xml
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.csprojResolveAssemblyReference.cache
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.exe
+c:\users\hiro-matsushita\documents\visual studio 2015\Projects\Soundddddddddddddddd\Soundddddddddddddddd\obj\Debug\Soundddddddddddddddd.pdb
