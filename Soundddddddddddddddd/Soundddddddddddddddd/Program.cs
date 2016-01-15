@@ -20,7 +20,7 @@ namespace Soundddddddddddddddd
         }
 
         /// <summary>
-        /// 音量、終了、再生、停止、一時停止、再開
+        /// コントロール(音量、終了、再生、停止、一時停止、再開）
         /// </summary>
         private void control()
         {
@@ -69,14 +69,14 @@ namespace Soundddddddddddddddd
         }
 
         /// <summary>
-        /// カレントディレクトリ一覧を取得し、ファイルを選択した後選択したファイルのパスを返す
+        /// ミュージックフォルダから音楽ファイルの一覧を取得し、ユーザーが選択したファイルのパスを返す
         /// </summary>
         /// <returns>選択されたファイルのパス</returns>
         private string select()
         {
-            string cd = Directory.GetCurrentDirectory();
-            string[] fileList = Directory.GetFiles(cd);
-            string[] musicList = { };
+            string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+            string[] fileList = Directory.GetFiles(directory);
+            string[] musicList = {};
             int count = 0;
             for (int n = 0, l = fileList.Length; n < l; n++)
             {
