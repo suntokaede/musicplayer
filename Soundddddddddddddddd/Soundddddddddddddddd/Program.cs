@@ -27,19 +27,27 @@ namespace Soundddddddddddddddd
             while (true)
             {
                 string i = Console.ReadLine();
-                float vol;
-                if (float.TryParse(i, out vol))
+                //音量
+                if (i.IndexOf("vol") >= 0)
                 {
-                    if (vol >= 0.0 && vol <= 1.0)
+                    string[] volStr = i.Split(' ');
+                    float vol;
+                    foreach (string s in volStr)
                     {
-                        waveOut.Volume = vol;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input");
+                        if (float.TryParse(s, out vol))
+                        {
+                            if (vol >= 0.0 && vol <= 1.0)
+                            {
+                                waveOut.Volume = vol;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid Input");
+                            }
+                        }
                     }
                 }
-                else
+                else//その他
                 {
                     switch (i)
                     {
