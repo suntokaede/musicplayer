@@ -12,11 +12,49 @@ namespace Soundddddddddddddddd
     class NAudioControl : IDisposable
     {
         private WaveOut waveOut;
+        private List<string> musicList = new List<string>();
         private bool exitFlag = false;
 
         public NAudioControl()
         {
             this.waveOut = new WaveOut();
+        }
+
+        /// <summary>
+        /// ミュージックフォルダから音楽ファイルの一覧を取得し、コマンドラインに表示
+        /// </summary>
+        private void showMusicList()
+        {
+            string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+            string[] fileList = Directory.GetFiles(directory);
+            for (int n = 0, l = fileList.Length; n < l; n++)
+            {
+                string fileName = Path.GetFileName(fileList[n]);
+                string ext = Path.GetExtension(fileName);
+                if (ext == ".wav" || ext == ".mp3" || ext == ".mp4" || ext == ".m4v")
+                {
+                    Console.WriteLine("{0}: {1}", musicList.Count, fileName);
+                    musicList.Add(fileList[n]);
+                }
+            }
+        }
+        
+        /// <summary>
+        /// ユーザーが選択したファイルのパスを返す
+        /// </summary>
+        /// <returns>選択されたファイルのパス</returns>
+        private string getPath()
+        {
+            while (true)
+            {
+                string n = Console.ReadLine();
+                int num;
+                if (int.TryParse(n, out num))
+                {
+                    if (num >= 0 && num < musicList.Count) return musicList[num];
+                }
+                Console.WriteLine("Invalid Input");
+            }
         }
 
         /// <summary>
@@ -77,43 +115,14 @@ namespace Soundddddddddddddddd
         }
 
         /// <summary>
-        /// ミュージックフォルダから音楽ファイルの一覧を取得し、ユーザーが選択したファイルのパスを返す
-        /// </summary>
-        /// <returns>選択されたファイルのパス</returns>
-        private string select()
-        {
-            string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
-            string[] fileList = Directory.GetFiles(directory);
-            List<string> musicList = new List<string>();
-            for (int n = 0, l = fileList.Length; n < l; n++)
-            {
-                string fileName = Path.GetFileName(fileList[n]);
-                string ext = Path.GetExtension(fileName);
-                if (ext == ".wav"|| ext == ".mp3"|| ext == ".mp4"|| ext == ".m4v") {
-                    Console.WriteLine(string.Format("{0}: {1}", musicList.Count, fileName));
-                    musicList.Add(fileList[n]);
-                }
-            }
-            while (true)
-            {
-                string n = Console.ReadLine();
-                int num;
-                if (int.TryParse(n, out num))
-                {
-                    if(num >= 0 && num < musicList.Count) return musicList[num];
-                }
-                Console.WriteLine("Invalid Input");
-            }
-        }
-
-        /// <summary>
         /// メイン関数
         /// </summary>
         public void main()
         {
             while (true)
             {
-                string path = select();
+                showMusicList();
+                string path = getPath();
                 using (var reader = new AudioFileReader(path))
                 {
                     waveOut.Init(reader);
