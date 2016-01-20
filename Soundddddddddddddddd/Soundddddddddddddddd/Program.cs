@@ -12,8 +12,9 @@ namespace Soundddddddddddddddd
     class NAudioControl : IDisposable
     {
         private WaveOut waveOut;
-        private List<string> musicList = new List<string>();
+        private List<string> musicList;
         private bool exitFlag = false;
+        private static readonly string[] ALLOWED_EXTENSION_TYPE = { ".wav", ".mp3", ".mp4", ".m4v" };
 
         public NAudioControl()
         {
@@ -21,22 +22,20 @@ namespace Soundddddddddddddddd
         }
 
         /// <summary>
-        /// ミュージックフォルダから音楽ファイルの一覧を取得し、コマンドラインに表示
+        /// ミュージックフォルダから音楽ファイルの一覧を取得します。
+        /// その後、コマンドラインに表示しリストに追加します。
         /// </summary>
-        private void showMusicList()
+        private void showAndMakeMusicList()
         {
             string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             string[] fileList = Directory.GetFiles(directory);
-            for (int n = 0, l = fileList.Length; n < l; n++)
-            {
-                string fileName = Path.GetFileName(fileList[n]);
-                string ext = Path.GetExtension(fileName);
-                if (ext == ".wav" || ext == ".mp3" || ext == ".mp4" || ext == ".m4v")
-                {
-                    Console.WriteLine("{0}: {1}", musicList.Count, fileName);
-                    musicList.Add(fileList[n]);
-                }
-            }
+            musicList = fileList
+                .Where(path => ALLOWED_EXTENSION_TYPE.Contains(Path.GetExtension(path)))
+                .ToList();
+            for(int i = 0,n = musicList.Count;i < n;i++){
+                string fileName = Path.GetFileName(musicList[i]);
+                Console.WriteLine("{0}: {1}", i, fileName);
+            }   
         }
         
         /// <summary>
@@ -85,7 +84,8 @@ namespace Soundddddddddddddddd
                         }
                     }
                 }
-                else//その他
+                else
+                //その他
                 {
                     switch (i)
                     {
@@ -121,7 +121,7 @@ namespace Soundddddddddddddddd
         {
             while (true)
             {
-                showMusicList();
+                showAndMakeMusicList();
                 string path = getPath();
                 using (var reader = new AudioFileReader(path))
                 {
